@@ -1,0 +1,41 @@
+/* Custom Styles for Glassmorphism & Animations */
+body {
+    background-color: #09090b; /* zinc-950 */
+    color: #f3f4f6; /* gray-100 */
+}
+
+/* Glassmorphism utilities */
+.glass {
+    background: rgba(24, 24, 27, 0.4); /* zinc-900 / 40% */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav {
+    background: rgba(9, 9, 11, 0.8); /* zinc-950 / 80% */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #09090b; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3f3f46; 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F5C518; 
+}

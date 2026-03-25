@@ -1,0 +1,186 @@
+/* Custom Styles for E-book Capture Page */
+body {
+    background-color: #09090b;
+    /* zinc-950 */
+    color: #f3f4f6;
+    /* gray-100 */
+}
+
+/* Glassmorphism utilities */
+.glass {
+    background: rgba(24, 24, 27, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav {
+    background: rgba(9, 9, 11, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Container de Perspectiva */
+.perspective-container {
+    perspective: 1000px;
+}
+
+/* --- REGRAS DO LIVRO 3D E ANIMAÇÕES --- */
+.livro-scene {
+    animation: gold-spin 15s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes gold-spin {
+    from {
+        transform: rotateY(0deg) rotateX(10deg);
+    }
+
+    to {
+        transform: rotateY(360deg) rotateX(10deg);
+    }
+}
+
+/* Quando o livro for aberto, as animações param imediatamente */
+.perspective-container:has(.livro-aberto) .livro-scene {
+    animation: none;
+    /* remove o loop infinito */
+    transform: rotateY(0deg) rotateX(0deg) !important;
+    /* vira para a câmera */
+    transition: transform 0.5s ease;
+    /* transição suave para encarar a câmera */
+}
+
+.perspective-container:has(.livro-aberto) .medal-orbits,
+.perspective-container:has(.livro-aberto) .sparkle {
+    animation-play-state: paused;
+}
+
+/* --- ÓRBITAS E EFEITOS (Ao redor do Livro) --- */
+.medal-orbits {
+    transform-style: preserve-3d;
+    animation: orbit-float 20s linear infinite;
+}
+
+@keyframes orbit-float {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateY(360deg) rotateZ(10deg);
+    }
+}
+
+/* Órbitas */
+.orbit-blue,
+.orbit-gold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.orbit-blue {
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    transform: translate(-50%, -50%) rotateX(60deg) rotateY(-20deg) rotateZ(30deg);
+}
+
+.orbit-gold {
+    width: 380px;
+    height: 180px;
+    border: 1px solid rgba(245, 197, 24, 0.5);
+    transform: translate(-50%, -50%) rotateX(70deg) rotateY(10deg) rotateZ(-30deg);
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(245, 197, 24, 0.8);
+    animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+.s1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.s2 {
+    top: 80%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.s3 {
+    top: 30%;
+    right: 5%;
+    animation-delay: 2s;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* --- REGRAS DA ABERTURA DO LIVRO --- */
+/* Capa girando para esquerda */
+.livro-capa {
+    transform-origin: left;
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    z-index: 20;
+}
+
+/* Miolo invisível por padrão */
+.livro-miolo {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Livro aberto */
+.livro-aberto .livro-capa {
+    transform: rotateY(-130deg);
+}
+
+.livro-aberto .livro-miolo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Scroll handling */
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F5C518;
+}
