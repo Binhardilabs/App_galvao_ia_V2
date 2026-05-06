@@ -13,10 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkEmail = document.getElementById('footer-email');
         const linkInstagram = document.getElementById('footer-instagram');
 
-        // Lendo as variáveis usando import.meta.env
-        const phone = import.meta.env.VITE_SUPPORT_PHONE || '+55 (34) 9727-6996';
-        const email = import.meta.env.VITE_SUPPORT_EMAIL || 'galvoinveste@gmail.com';
-        const instagram = import.meta.env.VITE_INSTAGRAM || import.meta.env.VITE_INSTAGRAM_URL || 'https://instagram.com/galvaoinveste';
+        let phone = '+55 (34) 9727-6996';
+        let email = 'galvoinveste@gmail.com';
+        let instagram = 'https://instagram.com/galvaoinveste';
+        let whatsappUrl = '';
+
+        try {
+            // Lendo as variáveis usando import.meta.env (falha silenciosamente se rodar sem Vite)
+            phone = import.meta.env.VITE_SUPPORT_PHONE || phone;
+            email = import.meta.env.VITE_SUPPORT_EMAIL || email;
+            whatsappUrl = import.meta.env.VITE_SUPPORT_WHATSAPP || '';
+            instagram = import.meta.env.VITE_INSTAGRAM || import.meta.env.VITE_INSTAGRAM_URL || instagram;
+        } catch(e) {
+            console.warn('Rodando fora do Vite. Usando contatos padrão.');
+        }
         
         // Remove todos os caracteres não-numéricos para uso em links tel: e wa.me/
         const cleanPhone = phone.replace(/\D/g, '');
@@ -25,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkWhatsapp) {
             if (phone) {
                 // Se houver a URL pronta no .env, usamos, senão construímos com o número formatado
-                linkWhatsapp.href = import.meta.env.VITE_SUPPORT_WHATSAPP || `https://wa.me/${cleanPhone}`;
+                linkWhatsapp.href = whatsappUrl || `https://wa.me/${cleanPhone}`;
             } else {
                 // Lida graciosamente caso não tenha o número no .env
                 linkWhatsapp.style.display = 'none';
