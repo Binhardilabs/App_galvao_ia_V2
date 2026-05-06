@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (phone) {
                 // Se houver a URL pronta no .env, usamos, senão construímos com o número formatado
                 linkWhatsapp.href = import.meta.env.VITE_SUPPORT_WHATSAPP || `https://wa.me/${cleanPhone}`;
-                linkWhatsapp.textContent = `WhatsApp: ${phone}`;
             } else {
                 // Lida graciosamente caso não tenha o número no .env
                 linkWhatsapp.style.display = 'none';
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkPhone) {
             if (phone) {
                 linkPhone.href = `tel:+${cleanPhone}`;
-                linkPhone.textContent = `Telefone: ${phone}`;
             } else {
                 linkPhone.style.display = 'none';
             }
@@ -47,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkEmail) {
             if (email) {
                 linkEmail.href = `mailto:${email}`;
-                linkEmail.textContent = `E-mail: ${email}`;
             } else {
                 linkEmail.style.display = 'none';
             }
