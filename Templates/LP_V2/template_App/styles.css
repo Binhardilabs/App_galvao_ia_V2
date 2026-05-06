@@ -52,7 +52,7 @@ html {
 }
 
 .animate-marquee {
-    animation: marquee 40s linear infinite;
+    animation: marquee 6.14s linear infinite;
     display: flex;
     width: max-content;
 }
