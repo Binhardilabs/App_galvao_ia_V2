@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Load Environment Variables from Vite
     // Note: Due to Vite processing, these are statically replaced during build/dev
-    const whatsappNumber = import.meta.env.VITE_SUPPORT_WHATSAPP || 'N/A';
-    const phoneNumber = import.meta.env.VITE_SUPPORT_PHONE || 'N/A';
-    const emailAddress = import.meta.env.VITE_SUPPORT_EMAIL || 'N/A';
-    const instagramUrl = import.meta.env.VITE_INSTAGRAM || '#';
+    const whatsappNumber = import.meta.env.VITE_SUPPORT_PHONE || '+55 (34) 9727-6996';
+    const phoneNumber = import.meta.env.VITE_SUPPORT_PHONE || '+55 (34) 9727-6996';
+    const emailAddress = import.meta.env.VITE_SUPPORT_EMAIL || 'galvoinveste@gmail.com';
+    const instagramUrl = import.meta.env.VITE_INSTAGRAM || 'https://instagram.com/galvaoinveste';
 
     // 2. Inject Variables into DOM
     

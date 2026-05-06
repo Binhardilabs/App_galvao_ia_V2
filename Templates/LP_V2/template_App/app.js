@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkInstagram = document.getElementById('footer-instagram');
 
         // Lendo as variáveis usando import.meta.env
-        const phone = import.meta.env.VITE_SUPPORT_PHONE || '';
-        const email = import.meta.env.VITE_SUPPORT_EMAIL || '';
-        const instagram = import.meta.env.VITE_INSTAGRAM || import.meta.env.VITE_INSTAGRAM_URL || '';
+        const phone = import.meta.env.VITE_SUPPORT_PHONE || '+55 (34) 9727-6996';
+        const email = import.meta.env.VITE_SUPPORT_EMAIL || 'galvoinveste@gmail.com';
+        const instagram = import.meta.env.VITE_INSTAGRAM || import.meta.env.VITE_INSTAGRAM_URL || 'https://instagram.com/galvaoinveste';
         
         // Remove todos os caracteres não-numéricos para uso em links tel: e wa.me/
         const cleanPhone = phone.replace(/\D/g, '');
